@@ -100,7 +100,14 @@ function SectionHeader({ index, title, subtitle, note }) {
 
 export default function App() {
   useEffect(() => {
+    document.documentElement.classList.add("js-ready");
     const nodes = document.querySelectorAll("[data-reveal]");
+
+    if (!("IntersectionObserver" in window)) {
+      nodes.forEach((node) => node.classList.add("is-visible"));
+      return undefined;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
