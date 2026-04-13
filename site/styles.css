@@ -153,7 +153,6 @@ img { display: block; max-width: 100%; }
     radial-gradient(circle at 20% 16%, rgba(212,175,55,.28), transparent 20%),
     radial-gradient(circle at 84% 18%, rgba(255,255,255,.1), transparent 12%);
 }
-.eyebrow { display: inline-block; color: #f4dc8c; margin-bottom: 16px; }
 h1, h2, h3 {
   margin: 0 0 12px;
   line-height: .98;
@@ -167,14 +166,20 @@ p, li, .section-note { color: var(--muted); line-height: 1.7; }
 .hero p, .hero .metric-card span, .hero .metric-card strong, .hero .card-tag, .hero .mini-card p { color: rgba(255,255,255,.84); }
 .lead { font-size: 1.18rem; max-width: 720px; margin-bottom: 18px; }
 .safe-note { max-width: 700px; color: rgba(255,255,255,.68); font-size: .95rem; }
-.hero-copy { display: grid; gap: 10px; }
+.hero-copy { display: grid; gap: 10px; justify-items: center; text-align: center; }
 .hero-copy .button-row { margin-top: 10px; margin-bottom: 10px; }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 30px;
+  grid-template-columns: 1fr;
+  gap: 24px;
   align-items: stretch;
   width: 100%;
+}
+.hero h1,
+.hero .lead,
+.hero .safe-note {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .btn {
@@ -217,28 +222,6 @@ p, li, .section-note { color: var(--muted); line-height: 1.7; }
   justify-content: space-between;
 }
 
-.hero-visual {
-  display: grid;
-  grid-template-columns: 1.08fr .92fr;
-  gap: 18px;
-  min-height: 100%;
-}
-.art-stage,
-.hero-side {
-  display: grid;
-  gap: 18px;
-}
-.logo-card { display: grid; place-items: center; text-align: center; min-height: 220px; }
-.mini-card.dark { background: linear-gradient(135deg, rgba(15,23,42,.46), rgba(30,58,138,.36)); }
-.mini-card { min-height: 146px; display: grid; align-content: end; }
-
-.frame-collage {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 18px;
-  min-height: 300px;
-}
 .frame, .image-feature, .creative-main, .profile-card {
   overflow: hidden; border-radius: 28px; background: #f1f3f7;
 }
@@ -251,9 +234,6 @@ p, li, .section-note { color: var(--muted); line-height: 1.7; }
 }
 .frame img, .image-feature img, .creative-main img, .profile-card img {
   width: 100%; height: 100%; object-fit: cover;
-}
-.frame.large {
-  min-height: 460px;
 }
 .profile-card { padding: 0; }
 
@@ -283,7 +263,15 @@ p, li, .section-note { color: var(--muted); line-height: 1.7; }
 }
 .manifesto p { color: rgba(255,255,255,.88); font-size: 1.3rem; line-height: 1.65; margin: 0; max-width: 980px; }
 
-.timeline { display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px; }
+.timeline {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(230px, 1fr);
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+}
 .timeline-card.highlight { background: linear-gradient(180deg, rgba(30,58,138,.12), rgba(255,255,255,.9)); }
 .timeline-card { min-height: 240px; display: grid; align-content: start; }
 
@@ -386,30 +374,23 @@ tbody tr:nth-child(even) td {
 
 @media (max-width: 1100px) {
   .hero-grid,
-  .hero-visual,
   .two-col,
   .strategy-flow,
   .creative-showcase,
   .section-header,
   .closing-layout { grid-template-columns: 1fr; }
-  .grid.four, .grid.three, .timeline, .budget-chart, .metric-grid { grid-template-columns: 1fr 1fr; }
+  .grid.four, .grid.three, .budget-chart, .metric-grid { grid-template-columns: 1fr 1fr; }
   .flow-arrow { transform: rotate(90deg); text-align: center; }
-  .frame-collage { min-height: auto; grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-  .frame.large { min-height: 360px; }
 }
 
 @media (max-width: 720px) {
   .topbar { position: static; }
   .topbar-inner { flex-direction: column; align-items: start; }
-  .anchor-nav, .grid.four, .grid.three, .timeline, .budget-chart, .metric-grid { display: grid; grid-template-columns: 1fr; width: 100%; }
+  .anchor-nav, .grid.four, .grid.three, .budget-chart, .metric-grid { display: grid; grid-template-columns: 1fr; width: 100%; }
   .anchor-nav .nav-cta { text-align: center; }
   .container { width: min(100vw - 18px, 1220px); }
   .page { padding: 12px 0 40px; }
   .panel { padding: 24px 18px; min-height: auto; }
-  .hero-grid,
-  .hero-visual { grid-template-columns: 1fr; }
-  .frame-collage { grid-template-columns: 1fr; grid-template-rows: auto; min-height: auto; }
-  .frame.large { min-height: 280px; }
   .button-row { flex-direction: column; }
   .btn { width: 100%; }
   h1 { font-size: 3.2rem; }
