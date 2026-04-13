@@ -512,6 +512,11 @@ li {
   align-items: stretch;
 }
 
+.projection-layout,
+.positioning-layout {
+  align-items: start;
+}
+
 .scenario-media {
   display: grid;
   gap: 18px;
@@ -575,6 +580,34 @@ li {
 
 .compact-grid .content-card {
   min-height: 100%;
+}
+
+.compact-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.compact-card {
+  position: relative;
+  padding: 30px 28px 28px;
+  background: linear-gradient(180deg, #fbfcfe, #eef2f8);
+  border-color: rgba(212, 175, 55, 0.14);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.compact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 4px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.9), rgba(37, 99, 235, 0.32));
+}
+
+.compact-card .card-tag {
+  margin-bottom: 14px;
+  color: rgba(15, 23, 42, 0.7);
 }
 
 .content-card h3 {
@@ -697,6 +730,7 @@ li {
 .manifesto-block {
   display: grid;
   gap: 18px;
+  grid-template-rows: auto auto;
 }
 
 .manifesto {
@@ -704,16 +738,64 @@ li {
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, rgba(10, 17, 32, 0.95), rgba(30, 58, 138, 0.9));
   box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.18);
+  display: grid;
+  gap: 22px;
+  align-content: start;
 }
 
 .manifesto p {
   color: rgba(255, 255, 255, 0.92);
-  font-size: clamp(1rem, 1.16vw, 1.18rem);
-  line-height: 1.7;
+  font-size: clamp(1.28rem, 1.8vw, 1.9rem);
+  line-height: 1.18;
+  max-width: 16ch;
 }
 
 .manifesto-copy p {
   color: rgba(255, 255, 255, 0.84);
+}
+
+.manifesto-rail {
+  display: grid;
+  gap: 10px;
+}
+
+.manifesto-rail span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.manifesto-pillars {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.manifesto-pillars article {
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.manifesto-pillars h3 {
+  margin-bottom: 8px;
+  font-size: clamp(1rem, 1.2vw, 1.16rem);
+  line-height: 1.18;
+}
+
+.manifesto-pillars p {
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.76);
 }
 
 .positioning-gallery {
@@ -943,6 +1025,44 @@ tbody tr:nth-child(even) td {
   min-height: 100%;
 }
 
+.projection-estimate {
+  display: grid;
+  gap: 6px;
+  margin-top: 20px;
+  padding: 20px 22px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(10, 17, 32, 0.98), rgba(30, 58, 138, 0.88));
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.projection-estimate strong {
+  font-family: var(--serif);
+  font-size: clamp(2.1rem, 3vw, 3rem);
+  line-height: 0.95;
+  color: #fff;
+}
+
+.projection-estimate span {
+  max-width: 28ch;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.94rem;
+  line-height: 1.45;
+}
+
+.projection-points {
+  margin-top: 18px;
+}
+
+.projection-points p {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 16px;
+}
+
 .projection-visual {
   margin-top: 18px;
   overflow: hidden;
@@ -1055,6 +1175,10 @@ tbody tr:nth-child(even) td {
   .budget-chart,
   .audience-columns {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .manifesto-pillars {
+    grid-template-columns: 1fr 1fr;
   }
 
   .flow-arrow {
@@ -1173,5 +1297,9 @@ tbody tr:nth-child(even) td {
   .scenario-profile {
     width: 72px;
     height: 72px;
+  }
+
+  .manifesto-pillars {
+    grid-template-columns: 1fr;
   }
 }
