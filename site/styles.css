@@ -190,6 +190,7 @@ p, li, .section-note { color: var(--muted); line-height: 1.7; }
 .btn.primary { color: #111827; background: linear-gradient(135deg, var(--gold), var(--gold-deep)); box-shadow: 0 12px 26px rgba(212,175,55,.24); }
 .btn.secondary { color: #fff; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
 .btn.ghost { background: rgba(255,255,255,.88); border-color: rgba(15,23,42,.08); }
+.btn.dark-text { color: #0f172a; }
 
 .metric-grid, .grid, .logo-column, .creative-side { display: grid; gap: 16px; }
 .metric-grid { grid-template-columns: repeat(4, 1fr); }
